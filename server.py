@@ -18,14 +18,14 @@ class server(asyncore.dispatcher):
             print type(addr)
             a=Client_Handler(sock)
             Clients.append(a)
-            print "%s has been connected"%addr
+            print "%s has been connected"%str(addr)
 
 
 
 class Client_Handler(asyncore.dispatcher):
     def __init__(self,sock):
         print "Client handler's init is running !"
-        asyncore.dispatcher.__init__(self,sock=sock)
+        asyncore.dispatcher.__init__(self,sock)
         print '1'
         self.create_socket(AF_INET,SOCK_STREAM)
         print '2'
@@ -41,6 +41,6 @@ class Client_Handler(asyncore.dispatcher):
         self.send("U are connected to the server ,at  %s !")%time.ctime()
 
 
-server=server("",5000)
+server=server("",5002)
 asyncore.loop()
 
