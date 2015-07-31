@@ -8,12 +8,12 @@ class client(asyncore.dispatcher):
         self.create_socket(AF_INET,SOCK_STREAM)
         self.connect((host,port))
     def handle_connect(self):
-        msg=self.recv(1024)
-        print msg
+        pass
     def readable(self):
         return True
     def handle_read(self):
         msg=self.recv(2048)
         print msg
 
-Cli=client('127.0.0.1',5000)
+Cli=client('127.0.0.1',5002)
+asyncore.loop()
